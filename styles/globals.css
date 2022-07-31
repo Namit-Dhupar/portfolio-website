@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* Applying Tailwind CSS to our common html tags, install tailwind intellisense for debugging by hoveringing */
+html {
+    scroll-behavior: smooth;
+}
 
 @layer base {
     body {
