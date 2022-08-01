@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ExperienceItem = ({ title, content }) => {
+const ExperienceItem = ({ title, content }) => {
     return (
         <div>
             <div className='h-[40vh] w-full shadow-xl shadow-gray-400 rounded-xl p-4 group bg-gradient-to-r from-[#5651e5] to-[#709dff] hover:scale-105 ease-in duration-300'>
@@ -13,3 +13,5 @@ export const ExperienceItem = ({ title, content }) => {
         </div>
     )
 }
+
+export default ExperienceItem;

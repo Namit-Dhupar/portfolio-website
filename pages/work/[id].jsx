@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 import { gql } from "@apollo/client";
-import { addBrTagOnParagraphClose, client } from '../utils';
+import { addBrTagOnParagraphClose, client } from '../../js/utils';
 
 export async function getStaticPaths() {
   return {
@@ -63,9 +63,9 @@ const property = ({ post }) => {
   const techArray = post?.projectData?.skills.split(',');
   if (Array.isArray(techArray)) {
     if (techArray.length > 3) {
-      const str = techArray.slice(0, 3).map(x => x + " /").toString();
+      const str = techArray.slice(0, 3)?.map(x => x + " /").toString();
       skillTitle = str.substr(0, str.length - 1).replace(/,/g, '')
-    } else skillTitle = techArray[0];
+    } else skillTitle = techArray?.[0];
   }
   else skillTitle = post?.projectData?.skills;
   return (
@@ -94,7 +94,7 @@ const property = ({ post }) => {
           <div className='p-2'>
             <p className='text-center font-bold pb-2'>Technologies/Skills</p>
             <div className='grid grid-cols-3 md:grid-cols-1'>
-              {Array.isArray(techArray) ? techArray.map((item, index) => {
+              {Array.isArray(techArray) ? techArray?.map((item, index) => {
                 return (
                   <p key={index} className='text-gray-600 py-2 flex items-center'>
                     <RiRadioButtonFill className='pr-1' />{item}

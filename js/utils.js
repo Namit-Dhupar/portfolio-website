@@ -1,8 +1,19 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
+// const defaultOptions = {
+//   watchQuery: {
+//     fetchPolicy: 'no-cache',
+//     errorPolicy: 'ignore',
+//   },
+//   query: {
+//     fetchPolicy: 'no-cache',
+//     errorPolicy: 'all',
+//   },
+// }
 export const client = new ApolloClient({
-  uri: 'http://127.0.0.1/wordpress/graphql',
+  uri: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
+  //defaultOptions: defaultOptions
 });
 
 export const MainQuery = gql `query NewQuery {
@@ -73,7 +84,8 @@ query NewQuery {
       node {
         mediaItemUrl,
         mediaType,
-        altText
+        altText,
+        title
       }
     }
   }
@@ -112,9 +124,9 @@ query NewQuery {
 }`;
 
 export const ExtractData = (propType) => {
-  return propType?.edges.map(({node}) => node);
+  return propType?.edges?.map(({node}) => node);
 }
 
 export const addBrTagOnParagraphClose = (item) => {
-  return item.replace(/<\/p>/g, "</p><br />")
+  return item?.replace(/<\/p>/g, "</p><br />")
 }

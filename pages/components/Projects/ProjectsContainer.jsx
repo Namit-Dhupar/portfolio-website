@@ -8,9 +8,9 @@ const ProjectsContainer = ({projectInfo}) => {
                 <p className='text-xl tracking-widest uppercase text-[#5651e5]'>
                     Projects
                 </p>
-                <h2 className='py-4'>What I've Built</h2>
+                <h2 className='py-4'>What I&apos;ve Built</h2>
                 <div className='grid md:grid-cols-2 gap-8'>
-                    {projectInfo.map((item, index) =>
+                    {projectInfo?.map((item, index) =>
                      <ProjectItem 
                        key={index}
                        projectImage={item?.featuredImage?.node?.mediaItemUrl}

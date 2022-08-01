@@ -19,7 +19,7 @@ const Social = ({ data, isNav }) => {
         <div className={isNav ? 'flex items-center justify-between my-4 w-full sm:w-[80%]' 
                         : 'flex items-center justify-between max-w-[330px] m-auto py-4'} >
             {
-                data.map((item, index) => {
+                data?.map((item, index) => {
                     if (item?.title.toUpperCase() === 'LINKEDIN') {
                         return (
                             <SocialWrapper key={index} isNav={isNav} item={item}>

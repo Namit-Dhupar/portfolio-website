@@ -118,7 +118,7 @@ const Navbar = ({ contactInfo, tagline, logo }) => {
               </Link>
             </ul>
             <div className='pt-20'>
-              <p className='uppercase tracking-widest text-[#5651e5]'>Let's Connect</p>
+              <p className='uppercase tracking-widest text-[#5651e5]'>Let&apos;s Connect</p>
               <Social data={contactInfo} isNav={true} />
             </div>
           </div>

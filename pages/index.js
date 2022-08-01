@@ -2,7 +2,7 @@ import Head from 'next/head'
 import {
   AboutQuery, ContactQuery, ExperienceQuery, ExtractData, MainQuery,
   MediaQuery, ProjectQuery, SkillQuery, client
-} from './utils';
+} from '../js/utils';
 import About from './components/About'
 import Contact from './components/Contact'
 import Main from './components/Main'
@@ -41,29 +41,29 @@ export async function getStaticProps() {
     query: ProjectQuery
   });
 
-  const responses = await Promise.all([main, about, skills, contact, media, experience, project]);
   return {
     props: {
-      mainData: ExtractData(responses[0]?.data?.pages || []),
-      aboutData: ExtractData(responses[1]?.data?.pages || []),
-      skillData: ExtractData(responses[2]?.data?.posts || []),
-      contactData: ExtractData(responses[3]?.data?.posts || []),
-      mediaData: ExtractData(responses[4]?.data?.mediaItems || []),
-      experienceData: ExtractData(responses[5]?.data?.posts || []),
-      projectData: ExtractData(responses[6]?.data?.posts || [])
-    }
+      mainData: ExtractData(main?.data?.pages || []),
+      aboutData: ExtractData(about?.data?.pages || []),
+      skillData: ExtractData(skills?.data?.posts || []),
+      contactData: ExtractData(contact?.data?.posts || []),
+      mediaData: ExtractData(media?.data?.mediaItems || []),
+      experienceData: ExtractData(experience?.data?.posts || []),
+      projectData: ExtractData(project?.data?.posts || [])
+    },
+    revalidate: 10
   }
 }
 
 export default function Home({ mainData, aboutData, skillData,
   contactData, mediaData, experienceData, projectData }) {
 
-  const name = mainData[0]?.main?.name;
-  const designation = mainData[0]?.main?.designation;
-  const tagline = mainData[0]?.main?.tagline;
+  const name = mainData?.[0]?.main?.name;
+  const designation = mainData?.[0]?.main?.designation;
+  const tagline = mainData?.[0]?.main?.tagline;
   const resumeData = mediaData.find(item => item?.mediaItemUrl.toUpperCase().indexOf('RESUME') > -1
     && item?.mediaType === 'file');
-  const logoData = mediaData.find(item => item?.altText.toUpperCase() === 'LOGO');
+  const logoData = mediaData.find(item => item?.title.toUpperCase() === 'LOGO');
 
   return (
     <div>

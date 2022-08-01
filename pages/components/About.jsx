@@ -1,8 +1,8 @@
 import React from 'react';
-import { addBrTagOnParagraphClose } from '../utils';
+import { addBrTagOnParagraphClose } from '../../js/utils';
 
 const About = ({items, downloadResume}) => {
-  const content = addBrTagOnParagraphClose(items[0].content);
+  const content = addBrTagOnParagraphClose(items?.[0]?.content);
   return (
     <div id='about' className='w-full md:h-screen p-2 flex items-center py-16'>
         <div className='max-w-[1240px] m-auto md:grid grid-cols-3 gap-8'>
@@ -19,7 +19,7 @@ const About = ({items, downloadResume}) => {
            </div>           
         </div>
         <div className='w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300'>
-            <img className='rounded-xl' src={items[0]?.featuredImage?.node?.mediaItemUrl}></img>
+            <img className='rounded-xl' alt='image' src={items?.[0]?.featuredImage?.node?.mediaItemUrl}></img>
         </div>
         </div>
     </div>

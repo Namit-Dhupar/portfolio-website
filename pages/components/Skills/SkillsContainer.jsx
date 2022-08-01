@@ -12,7 +12,7 @@ const SkillsContainer = ({data}) => {
         <h2 className='py-4'>What Can I Do</h2>
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
           {
-            data.map((item, index) => 
+            data?.map((item, index) => 
             <SkillsItem key={index} skillImage={item?.featuredImage?.node?.mediaItemUrl} skillName={item?.title} />)
           }
         </div>
