@@ -1,7 +1,8 @@
 import React from 'react';
+import { addBrTagOnParagraphClose } from '../utils';
 
 const About = ({items, downloadResume}) => {
-  const content = items[0].content.replace(/<\/p>/g, "</p><br />");
+  const content = addBrTagOnParagraphClose(items[0].content);
   return (
     <div id='about' className='w-full md:h-screen p-2 flex items-center py-16'>
         <div className='max-w-[1240px] m-auto md:grid grid-cols-3 gap-8'>

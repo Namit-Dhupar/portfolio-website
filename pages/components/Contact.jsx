@@ -55,25 +55,25 @@ const Contact = ({contactInfo, name, designation}) => {
                             <form method='post' onSubmit={handleOnSubmit}>
                                 <div className='flex flex-col'>
                                     <label htmlFor='name' className='uppercase text-sm py-2'>Name</label>
-                                    <input
+                                    <input required
                                         className='border-2 rounded-lg p-3 flex border-gray-300'
                                         type='text' name='name' />
                                 </div>
                                 <div className='flex flex-col py-2'>
                                     <label htmlFor='email' className='uppercase text-sm py-2'>Email</label>
-                                    <input
+                                    <input required
                                         className='border-2 rounded-lg p-3 flex border-gray-300'
                                         type='email' name='email' />
                                 </div>
                                 <div className='flex flex-col py-2'>
                                     <label htmlFor='subject' className='uppercase text-sm py-2'>Subject</label>
-                                    <input
+                                    <input required
                                         className='border-2 rounded-lg p-3 flex border-gray-300'
                                         type='text' name='subject' />
                                 </div>
                                 <div className='flex flex-col py-2'>
                                     <label htmlFor='message' className='uppercase text-sm py-2'>Message</label>
-                                    <textarea
+                                    <textarea required
                                         className='border-2 rounded-lg p-3 flex border-gray-300'
                                         rows='10' name='message' />
                                 </div>

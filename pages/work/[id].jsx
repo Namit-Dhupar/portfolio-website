@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 import { gql } from "@apollo/client";
-import { client } from '../utils';
+import { addBrTagOnParagraphClose, client } from '../utils';
 
 export async function getStaticPaths() {
   return {
@@ -58,7 +58,7 @@ export async function getStaticProps({ params }) {
 
 const property = ({ post }) => {
   let skillTitle;
-  const content = post?.content.replace(/<\/p>/g, "</p><br />");
+  const content = addBrTagOnParagraphClose(post?.content);
   const projectImage = post?.featuredImage?.node?.mediaItemUrl
   const techArray = post?.projectData?.skills.split(',');
   if (Array.isArray(techArray)) {

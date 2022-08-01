@@ -114,3 +114,7 @@ query NewQuery {
 export const ExtractData = (propType) => {
   return propType?.edges.map(({node}) => node);
 }
+
+export const addBrTagOnParagraphClose = (item) => {
+  return item.replace(/<\/p>/g, "</p><br />")
+}
