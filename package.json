@@ -17,8 +17,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "tailwindcss": "^3.1.5",
-    "vercel": "^27.3.3"
+    "tailwindcss": "^3.1.5"
   },
   "devDependencies": {
     "eslint": "8.19.0",

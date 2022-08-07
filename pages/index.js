@@ -50,8 +50,7 @@ export async function getStaticProps() {
       mediaData: ExtractData(media?.data?.mediaItems || []),
       experienceData: ExtractData(experience?.data?.posts || []),
       projectData: ExtractData(project?.data?.posts || [])
-    },
-    revalidate: 10
+    }
   }
 }
 
