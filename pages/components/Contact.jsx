@@ -2,10 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
 import contactImage from '../../public/assets/contact.jpg'
+import { gql } from "@apollo/client";
+import { client, sendMail } from '../../js/utils';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi'
 import Social from './Social';
 
 const Contact = ({contactInfo, name, designation}) => {
+    
     const handleOnSubmit = async (event) => {
          event.preventDefault(); 
          const formData = {};
@@ -13,12 +16,8 @@ const Contact = ({contactInfo, name, designation}) => {
             if(!field.name) return; //return if its just a button
             formData[field.name] = field.value;
          });
-         //Sending Data to api/mail.js
-         fetch('/api/mail', {
-            method: 'post',
-            body: JSON.stringify(formData)
-         })
-         console.log(formData);
+         const data = await sendMail(formData);
+         console.log(data);
     }
     return (
         <div id='contact' className='w-full lg:h-screen'>
@@ -41,7 +40,7 @@ const Contact = ({contactInfo, name, designation}) => {
                             <div>
                                 <h2 className='py-2'>{name}</h2>
                                 <p>{designation}</p>
-                                <p className='py-4'>I am available for freelance or full-time positions. Contact me and let&apos;s talk</p>
+                                <p className='py-4'>I am available for full-time positions. Contact me and let&apos;s talk</p>
                             </div>
                             <div>
                                 <p className='uppercase p-8'>Connect with Me</p>
@@ -52,18 +51,12 @@ const Contact = ({contactInfo, name, designation}) => {
                     {/*right*/}
                     <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4'>
                         <div className='p-4'>
-                            <form method='post' onSubmit={handleOnSubmit}>
-                                <div className='flex flex-col'>
-                                    <label htmlFor='name' className='uppercase text-sm py-2'>Name</label>
-                                    <input required
-                                        className='border-2 rounded-lg p-3 flex border-gray-300'
-                                        type='text' name='name' />
-                                </div>
+                            <form method='post' onSubmit={handleOnSubmit}>                               
                                 <div className='flex flex-col py-2'>
-                                    <label htmlFor='email' className='uppercase text-sm py-2'>Email</label>
+                                    <label htmlFor='name' className='uppercase text-sm py-2'>Email</label>
                                     <input required
                                         className='border-2 rounded-lg p-3 flex border-gray-300'
-                                        type='email' name='email' />
+                                        type='email' name='from' />
                                 </div>
                                 <div className='flex flex-col py-2'>
                                     <label htmlFor='subject' className='uppercase text-sm py-2'>Subject</label>
@@ -72,10 +65,10 @@ const Contact = ({contactInfo, name, designation}) => {
                                         type='text' name='subject' />
                                 </div>
                                 <div className='flex flex-col py-2'>
-                                    <label htmlFor='message' className='uppercase text-sm py-2'>Message</label>
+                                    <label htmlFor='body' className='uppercase text-sm py-2'>Message</label>
                                     <textarea required
                                         className='border-2 rounded-lg p-3 flex border-gray-300'
-                                        rows='10' name='message' />
+                                        rows='10' name='body' />
                                 </div>
                                 <button className='w-full p-4 text-gray-100 mt-4'>
                                     Send Message

@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql, useMutation } from "@apollo/client";
 
 // const defaultOptions = {
 //   watchQuery: {
@@ -16,8 +16,9 @@ export const client = new ApolloClient({
   //defaultOptions: defaultOptions
 });
 
-export const MainQuery = gql `query NewQuery {
-    pages(where: {title: "Main"}) {
+export const MainQuery = gql`
+  query NewQuery {
+    pages(where: { title: "Main" }) {
       edges {
         node {
           main {
@@ -26,10 +27,16 @@ export const MainQuery = gql `query NewQuery {
             tagline
           }
           content
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
         }
       }
     }
-  }`;
+  }
+`;
 
 export const AboutQuery = gql`
 query NewQuery {
@@ -122,6 +129,37 @@ query NewQuery {
     }
   }
 }`;
+
+// const TOGGLE_SENDMAIL = gql`
+//   mutation MyMutation($body: String!, $from: String!, $subject: String!) {
+//   sendEmail(input: {body: $body, from: $from, subject: $subject}) {
+//     sent
+//   }
+// }
+//   `;
+
+//  const [toggleSendMail] = useMutation(TOGGLE_SENDMAIL, {client: client});
+
+//  export const sendMail = (formData) => {
+//   toggleSendMail({
+//     variables: formData,
+//     optimisticResponse: true,
+//   });
+// };
+
+export async function sendMail(formData) {
+	const data = await client.mutate({
+    mutation: gql`
+    mutation MyMutation($body: String!, $from: String!, $subject: String!) {
+        sendEmail(input: {body: $body, from: $from, subject: $subject}) {
+          sent
+        }
+      }
+    `,
+    variables: formData 
+ })
+return data;
+}
 
 export const ExtractData = (propType) => {
   return propType?.edges?.map(({node}) => node);
