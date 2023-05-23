@@ -1,34 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+www.rakshitgrover.com
 
-## Getting Started
+This project is a website built using various technologies such as React-Redux, NextJS, GraphQL, Wordpress, and TailwindCSS. It leverages the power of Wordpress as a content management system (CMS) and GraphQL for querying data in the user interface. The website showcases dynamic webpages, a contact form, and attractive animation effects.
 
-First, run the development server:
+### Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
+- React-Redux
+- NextJS
+- GraphQL
+- Wordpress
+- TailwindCSS
+
+### Getting Started
+
+To get started with the project, follow these steps:
+
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/username/rakshitgrover.com.git
+   ```
+
+2. Install the dependencies:
+
+   ```
+   cd rakshitgrover.com
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+   This will start the project locally at `http://localhost:3000`.
+
+### Project Structure
+
+```
+├── components
+│   ├── Header.js
+│   ├── Footer.js
+│   ├── ...
+├── pages
+│   ├── index.js
+│   ├── about.js
+│   ├── contact.js
+│   └── ...
+├── styles
+│   ├── globals.css
+│   ├── ...
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `components`: Contains reusable components used throughout the website.
+- `pages`: Defines the pages/routes of the website.
+- `styles`: Contains global CSS styles used across the project.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Dynamic webpages: The website offers dynamic webpages to provide a rich and interactive user experience.
+- Contact form: Users can easily get in touch through the contact form provided on the website.
+- Attractive animation effects: The website incorporates visually appealing animation effects to enhance the overall user interface.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Contributions
 
-## Learn More
+Contributions to this project are welcome. If you encounter any issues or have suggestions for improvement, please feel free to open an issue or submit a pull request.
 
-To learn more about Next.js, take a look at the following resources:
+### License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
